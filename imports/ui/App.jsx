@@ -4,7 +4,7 @@ import {createContainer} from 'meteor/react-meteor-data';
 import {Markers} from '../api/markers.js';
 import ons from 'onsenui';
 import Ons from 'react-onsenui';
-import Map, {GoogleApiWrapper} from 'google-maps-react';
+import AMap from '../Map.jsx'
 import styles from './App.css';
 require ("onsenui/css/onsenui.css")
 require ("onsenui/css/onsen-css-components.css");
@@ -52,13 +52,15 @@ class App extends Component {
            style={{
                boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
            }}
-           side='right'
-           width={500}
+           side='left'
+           width='30%'
            collapse={true}
+           swipeTargetWidth={100}
            isSwipeable={true}
            isOpen={this.state.isOpen}
            onClose={this.hide}
            onOpen={this.show}
+           openThreshold={0.6}
          >
            <Ons.Page>
              <Ons.List
@@ -71,7 +73,7 @@ class App extends Component {
          </Ons.SplitterSide>
          <Ons.SplitterContent>
            <Ons.Page renderToolbar={this.renderToolbar} renderFixed={this.renderFixed}>
-              <Map google={this.props.google} />
+              <AMap google={this.props.google}/>
            </Ons.Page>
          </Ons.SplitterContent>
        </Ons.Splitter>
@@ -84,6 +86,4 @@ App.propTypes = {
   //markers: T.array.isRequired,
 };
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyBTaU5CKA7MPl86Qr7b2TOiiq4KRJWkZV0"
-})(App)
+export default App
