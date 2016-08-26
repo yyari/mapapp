@@ -34,7 +34,7 @@ class AMap extends Component{
     return(
       <Map
         google={this.props.google}
-        initialCenter={this.state.currentLocation}
+        center={this.state.currentLocation}
         zoom={20}
       />
     );
@@ -43,10 +43,6 @@ class AMap extends Component{
 
 AMap.getDefaultProps = {
   zoom: 13,
-  initialCenter: {
-    lat: 44.0176178,
-    lng: 20.904987
-  },
   centerAroundCurrentLocation: true
 }
 

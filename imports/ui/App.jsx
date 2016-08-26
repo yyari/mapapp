@@ -1,11 +1,9 @@
 import React, { Component, PropTypes as T } from 'react';
-import ReactDOM from 'react-dom';
 import {createContainer} from 'meteor/react-meteor-data';
 import {Markers} from '../api/markers.js';
 import ons from 'onsenui';
 import Ons from 'react-onsenui';
-import AMap from '../Map.jsx'
-import styles from './App.css';
+import AMap from '../Map.jsx';
 require ("onsenui/css/onsenui.css")
 require ("onsenui/css/onsen-css-components.css");
 
@@ -38,7 +36,7 @@ class App extends Component {
     renderFixed() {
       return (
         <Ons.Fab
-          onClick={() => {ons.notification.alert({message: 'radinesto!'});}}
+          onClick={() => {FlowRouter.go("/submit");}}
           position='bottom right'>
           <Ons.Icon icon='md-face' />
         </Ons.Fab>
