@@ -3,8 +3,9 @@ import {createContainer} from 'meteor/react-meteor-data';
 import {Markers} from '../api/markers.js';
 import ons from 'onsenui';
 import Ons from 'react-onsenui';
-import AMap from '../Map.jsx';
-require ("onsenui/css/onsenui.css")
+import AMap from './Map.jsx';
+import { Link } from 'react-router';
+require ("onsenui/css/onsenui.css");
 require ("onsenui/css/onsen-css-components.css");
 
 class App extends Component {
@@ -25,21 +26,14 @@ class App extends Component {
      this.setState({isOpen: true,});
    }
 
-   renderToolbar() {
-      return (
-        <Ons.Toolbar>
-          <div className='center'>Mapapp</div>
-        </Ons.Toolbar>
-      );
-    }
-
     renderFixed() {
       return (
-        <Ons.Fab
-          onClick={() => {FlowRouter.go("/submit");}}
-          position='bottom right'>
-          <Ons.Icon icon='md-face' />
-        </Ons.Fab>
+        <Link to="/submit">
+          <Ons.Fab
+            position='bottom right'>
+            <Ons.Icon icon='md-face' />
+          </Ons.Fab>
+        </Link>
       );
     }
 
@@ -70,7 +64,7 @@ class App extends Component {
            </Ons.Page>
          </Ons.SplitterSide>
          <Ons.SplitterContent>
-           <Ons.Page renderToolbar={this.renderToolbar} renderFixed={this.renderFixed}>
+           <Ons.Page renderFixed={this.renderFixed}>
               <AMap google={this.props.google}/>
            </Ons.Page>
          </Ons.SplitterContent>
@@ -84,4 +78,4 @@ App.propTypes = {
   //markers: T.array.isRequired,
 };
 
-export default App
+export default App;

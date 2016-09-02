@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
 import ReactDOM from 'react-dom';
-import Map, {GoogleApiWrapper} from 'google-maps-react';
+import Map, {GoogleApiWrapper, Marker} from 'google-maps-react';
 
 class AMap extends Component{
   constructor(props) {
@@ -12,6 +12,9 @@ class AMap extends Component{
         lng: 20.904983
       }
     }
+
+    this.componentDidMount = this.componentDidMount.bind(this);
+
   }
 
   componentDidMount() {
@@ -34,9 +37,13 @@ class AMap extends Component{
     return(
       <Map
         google={this.props.google}
-        center={this.state.currentLocation}
-        zoom={20}
-      />
+        initialCenter={this.state.currentLocation}
+        zoom={20}>
+        <Marker
+         name={'Dolores park'}
+         position={this.state.currentLocation} />
+       <Marker />
+      </Map>
     );
   }
 }
@@ -55,4 +62,4 @@ AMap.propTypes = {
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyBTaU5CKA7MPl86Qr7b2TOiiq4KRJWkZV0"
-})(AMap)
+})(AMap);

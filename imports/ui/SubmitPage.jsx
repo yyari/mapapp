@@ -1,6 +1,8 @@
 import React, { Component, PropTypes as T } from 'react';
 import ons from 'onsenui';
 import Ons from 'react-onsenui';
+require ("onsenui/css/onsenui.css");
+require ("onsenui/css/onsen-css-components.css");
 
 class Sub extends Component {
   constructor(props) {
@@ -13,21 +15,13 @@ class Sub extends Component {
      this.handleChange = this.handleChange.bind(this);
    }
 
-   renderToolbar() {
-      return (
-        <Ons.Toolbar>
-          <div className='center'>Mapapp</div>
-        </Ons.Toolbar>
-      );
-    }
-
     handleClick() {
       console.log("tu je");
     }
 
    render() {
      return(
-       <Ons.Page renderToolbar={this.renderToolbar}>
+       <Ons.Page>
           <section style={{textAlign: 'center'}}>
             <p> Text: </p>
             <p>
@@ -54,3 +48,5 @@ class Sub extends Component {
      );
    }
 }
+
+export default Sub;
